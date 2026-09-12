@@ -73,13 +73,14 @@ platform :ios do
     )      
     
     match(
-      type: "appstore",
-      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
-      app_identifier: [
-        APP_IDENTIFIER,
-        LA_IDENTIFIER
-      ]
-    )
+  readonly: false,
+  type: "appstore",
+  git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
+  app_identifier: [
+    APP_IDENTIFIER,
+    LA_IDENTIFIER
+  ]
+)
 
     mapping = Actions.lane_context[
       SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
